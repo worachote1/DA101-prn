@@ -109,49 +109,50 @@ public class Sorting {
 	}
 
 	public static void quickSort(int a[], int lowIndex, int hightIndex) {
-		
-		if(lowIndex >= hightIndex) {
+
+		if (lowIndex >= hightIndex) {
 			return;
 		}
-		
+
 		int pivot = a[hightIndex]; // i chose the last element as pivot
 		int leftPointer = lowIndex;
 		int rightPointer = hightIndex;
-		
-		//keep moving left and right pointer toward each other 
-		//then swap until those pointer meet each other
-		//After that , swap pivot with the point that those pointer meet each other
-		while(leftPointer<rightPointer) {
-			while(a[leftPointer]<=pivot && leftPointer<rightPointer) {
+
+		// keep moving left and right pointer toward each other
+		// then swap until those pointer meet each other
+		// After that , swap pivot with the point that those pointer meet each other
+		while (leftPointer < rightPointer) {
+			while (a[leftPointer] <= pivot && leftPointer < rightPointer) {
 				leftPointer++;
 			}
-			while(a[rightPointer]>=pivot && leftPointer<rightPointer) {
+			while (a[rightPointer] >= pivot && leftPointer < rightPointer) {
 				rightPointer--;
-			}		
-			
-			swap(a,leftPointer,rightPointer);
+			}
+
+			swap(a, leftPointer, rightPointer);
 		}
-		
+
 		swap(a, leftPointer, hightIndex);
-		//the partition step done here
-		//all left element < pivot and all right element > pivot
-		
-		//recursive step
-		//recursive the left side and the right side of pivot
-		
-		//left
-		quickSort(a, lowIndex, leftPointer-1);
-		//right
-		quickSort(a, leftPointer+1, hightIndex);
+		// the partition step done here
+		// all left element < pivot and all right element > pivot
+
+		// recursive step
+		// recursive the left side and the right side of pivot
+
+		// left
+		quickSort(a, lowIndex, leftPointer - 1);
+		// right
+		quickSort(a, leftPointer + 1, hightIndex);
 	}
 
-	public static void swap(int a[],int index1,int index2) {
-		
+	public static void swap(int a[], int index1, int index2) {
+
 		int temp = a[index1];
-		a[index1]=a[index2];
-		a[index2]=temp;
-		
+		a[index1] = a[index2];
+		a[index2] = temp;
+
 	}
+
 	public static void main(String[] args) {
 
 		int a[] = new int[100];
@@ -169,11 +170,11 @@ public class Sorting {
 //		selection(a);
 //		System.out.println("After selection : "+Arrays.toString(a));
 
-//		System.out.println("Before insertion : "+Arrays.toString(a));
+		// System.out.println("Before insertion : "+Arrays.toString(a));
 //		t1 = System.currentTimeMillis();
 //	    insertion(a);
 //		t2 = System.currentTimeMillis();
-//		System.out.println("After insertion : "+Arrays.toString(a));
+		// System.out.println("After insertion : "+Arrays.toString(a));
 //		System.out.println("insertion sort take time : "+(t2-t1));
 
 //		System.out.println("Before mergeSort : " + Arrays.toString(a));
@@ -188,7 +189,7 @@ public class Sorting {
 		t1 = System.currentTimeMillis();
 		quickSort(a, 0, a.length - 1);
 		t2 = System.currentTimeMillis();
-		System.out.println("QuickSort take time : " + (t2 - t1));		
+		System.out.println("QuickSort take time : " + (t2 - t1));
 		System.out.println("After QuickSort : " + Arrays.toString(a));
 	}
 }
