@@ -16,7 +16,7 @@ public class Particle {
 	public Particle() {
 		x = 250;
 		y = 250;
-		vx = (int) (Math.random() * 10+5);
+		vx = (int) (Math.random() * 10-5);
 		vy = (int) (Math.random() * 10-5);
 		ax = 0;
 		ay = 0.5;
