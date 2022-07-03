@@ -1,56 +1,75 @@
 package DST0_BigO_Sort;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class My_QuickSort {
 
-	public static void quickSort(int a[], int lowIndex, int hightIndex) {
+	public static void quickSort(double a[],int lowIndex,int highIndex) {
 		
-		if(!(lowIndex<hightIndex)) {
+		if(lowIndex>=highIndex) {
 			return;
 		}
 		
-		int pivot = a[hightIndex];
+		Random rand = new Random();
+		int pivot_index = rand.nextInt(highIndex-lowIndex)+lowIndex;
+		double pivot = a[pivot_index];
+		//swap random pivot with highIndex
+		swap(a, pivot_index, highIndex);
 		int leftPointer = lowIndex;
-		int rightPointer = hightIndex;
+		int rightPointer = highIndex;
 		
 		while(!(leftPointer==rightPointer)) {
-			while(a[leftPointer]<=pivot && leftPointer<rightPointer) {
+			
+			//shift leftPointer to the number that > pivot
+			while(a[leftPointer]<=pivot && !(leftPointer==rightPointer)) {
 				leftPointer++;
 			}
-			while(a[rightPointer]>=pivot && leftPointer<rightPointer ) {
+			//shift rightPointer to the number that < pivot
+			while(a[rightPointer]>=pivot && !(leftPointer==rightPointer)) {
 				rightPointer--;
 			}
 			
-		    if(!(leftPointer==rightPointer)) {
-				swap(a, leftPointer, rightPointer);
-			}
+			//after end with shift left and right pointer
+			//swap each other
+			swap(a, leftPointer, rightPointer);
 		}
-		swap(a, leftPointer, hightIndex);
 		
+		//swap pivot(at pivotIndex) with number that have both left and right pointer(at leftPointer or right Pointer index)
+		swap(a, leftPointer,highIndex);
+		
+		//now left side of pivot are < 
+		//and right side of pivot are >
+		
+		//recursive quick sort left side and right side
+		
+		//left side recursive
 		quickSort(a, lowIndex, leftPointer-1);
-		quickSort(a, leftPointer+1, hightIndex);
+		//right side recursive
+		quickSort(a, leftPointer+1, highIndex);
 	}
-
-	public static void swap(int a[],int index1,int index2) {
-		
-		int temp = a[index1];
+	public static void swap(double a[],int index1,int index2) {
+		double temp = a[index1];
 		a[index1]=a[index2];
 		a[index2]=temp;
-		
 	}
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int a[] = {20,5,44,10};
+		Random rand = new Random();
+		
+		double a[] =new double[4444444]; //{20.66,20,44,20.44};
+		for(int i=0;i<a.length;i++) {
+			a[i] = rand.nextDouble()*100;
+		}
 		long t1, t2;
 		
-		System.out.println("Before QuickSort : " + Arrays.toString(a));
+		//System.out.println("Before QuickSort : " + Arrays.toString(a));
 		t1 = System.currentTimeMillis();
 		quickSort(a, 0, a.length - 1);
 		t2 = System.currentTimeMillis();
+		//System.out.println("After QuickSort : " + Arrays.toString(a));
 		System.out.println("QuickSort take time : " + (t2 - t1));		
-		System.out.println("After QuickSort : " + Arrays.toString(a));
 	}
 
 }

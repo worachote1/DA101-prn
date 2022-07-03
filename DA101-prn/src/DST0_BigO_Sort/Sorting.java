@@ -50,59 +50,69 @@ public class Sorting {
 	}
 
 	public static void merge_sort(int arr[], int left, int right) {
-		if (left == right)
-			return;
-
-		else {
-			if (left < right) {
-				int mid = (left + right) / 2;
+	if(left==right) return;
+		
+		
+		else
+		{
+			
+			if(left<right)
+			{
+				int mid = (left+right)/2;
 				merge_sort(arr, left, mid);
-				merge_sort(arr, mid + 1, right);
-
-				// Merge
-				// for comparison , sorting and merging
-
-				// temp arrays
-				int temp[] = new int[arr.length];
-				// index of temp arrays
-				int temp_index = left;
-				// left-sub arrays starter index
+				merge_sort(arr, mid+1, right);  
+			
+				//Merge 
+				//for comparison , sorting and merging	
+				
+				//temp arrays
+				int temp[] = new int[arr.length];  		
+				//index of temp arrays
+				int temp_index = left; 
+				//left-sub arrays starter index
 				int left_index = left;
-				// right-sub arrays starter index
-				int right_index = mid + 1;
-
-				// merge the left and right subarrays
-				while (left_index <= mid && right_index <= right) {
-					if (arr[left_index] < arr[right_index]) {
-						temp[temp_index++] = arr[left_index++];
-						// temp_index++;
-						// left_index++;
-					} else if (arr[right_index] < arr[left_index]) {
-						temp[temp_index++] = arr[right_index++];
-						// temp_index++;
-						// right_index++;
+				//right-sub arrays starter index
+				int right_index = mid+1;
+				
+				//merge the left and right subarrays
+				while(left_index<=mid && right_index<=right)
+				{
+					if(arr[left_index]<arr[right_index])
+					{
+						temp[temp_index++]=arr[left_index++];
+						//temp_index++;
+						//left_index++;
+					}
+					else if(arr[right_index]<arr[left_index])
+					{
+						temp[temp_index++]=arr[right_index++];
+					//	temp_index++;
+					//	right_index++;
 					}
 				}
-
-				// merge for remaining either sub-left or sub-right
-				while (left_index <= mid) {
-
-					temp[temp_index++] = arr[left_index++];
-					// temp_index++;
-					// left_index++;
+				
+				//merge for remaining either sub-left or sub-right
+				while(left_index<=mid)
+				{
+						temp[temp_index++]=arr[left_index++];
+			//			temp_index++;
+			//			left_index++;
 				}
-				while (right_index <= right) {
-
-					temp[temp_index++] = arr[right_index++];
-					// temp_index++;
-					// right_index++;
-
+				while(right_index<=right)
+				{
+					
+						temp[temp_index++]=arr[right_index++];
+			//			temp_index++;
+			//			right_index++;
+										
 				}
-
-				// Finally , clone temp into arr
-				for (int i = left; i <= right; i++) {
-					arr[i] = temp[i];
+			
+				//Finally , clone temp into arr
+				for(int i=left;i<=right;i++)
+				{
+					arr[i]=temp[i];
 				}
+				
 			}
 		}
 
@@ -155,7 +165,7 @@ public class Sorting {
 
 	public static void main(String[] args) {
 
-		int a[] = new int[100];
+		int a[] = new int[10];
 
 		for (int i = 0; i < a.length; i++) {
 			a[i] = (int) (Math.random() * a.length - a.length / 2);
@@ -177,19 +187,19 @@ public class Sorting {
 		// System.out.println("After insertion : "+Arrays.toString(a));
 //		System.out.println("insertion sort take time : "+(t2-t1));
 
-//		System.out.println("Before mergeSort : " + Arrays.toString(a));
-//		t1 = System.currentTimeMillis();
-//		merge_sort(a, 0, a.length - 1);
-//		
-//		System.out.println("After mergeSort : " + Arrays.toString(a));
-//		t2 = System.currentTimeMillis();
-//		System.out.println("mergeSort take time : " + (t2 - t1));
+		System.out.println("Before mergeSort : " + Arrays.toString(a));
+		//t1 = System.currentTimeMillis();
+		merge_sort(a, 0, a.length - 1);
+		//t2 = System.currentTimeMillis();
+		System.out.println("After mergeSort : " + Arrays.toString(a));
+		//System.out.println("mergeSort take time : " + (t2 - t1));
 
-		System.out.println("Before QuickSort : " + Arrays.toString(a));
-		t1 = System.currentTimeMillis();
-		quickSort(a, 0, a.length - 1);
-		t2 = System.currentTimeMillis();
-		System.out.println("QuickSort take time : " + (t2 - t1));
-		System.out.println("After QuickSort : " + Arrays.toString(a));
+//		System.out.println("Before QuickSort : " + Arrays.toString(a));
+//		t1 = System.currentTimeMillis();
+//		quickSort(a, 0, a.length - 1);
+//		t2 = System.currentTimeMillis();
+//		System.out.println("QuickSort take time : " + (t2 - t1));
+//		System.out.println("After QuickSort : " + Arrays.toString(a));
+		
 	}
 }
