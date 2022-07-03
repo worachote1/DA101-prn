@@ -13,7 +13,7 @@ public class Particle {
 	private int age;
 	private boolean isAlive;
 	
-	public Particle() {
+	public Particle() { 
 		x = 250;
 		y = 250;
 		vx = (int) (Math.random() * 10-5);
