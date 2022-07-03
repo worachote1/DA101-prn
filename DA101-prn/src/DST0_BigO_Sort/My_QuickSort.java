@@ -35,7 +35,7 @@ public class My_QuickSort {
 			swap(a, leftPointer, rightPointer);
 		}
 		
-		//swap pivot(at pivotIndex) with number that have both left and right pointer(at leftPointer or right Pointer index)
+		//swap pivot(which now at hightIndex) with number that have both left and right pointer(at leftPointer or right Pointer index)
 		swap(a, leftPointer,highIndex);
 		
 		//now left side of pivot are < 
