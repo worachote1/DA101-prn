@@ -19,7 +19,7 @@ public class LinkedList {
 		n.data = x;
 
 		n.next = head.next;
-		//head.next = n;
+		head.next = n;
 		
 		System.out.println("addFirst prn = "+n.data);
 	}
@@ -32,12 +32,12 @@ public class LinkedList {
 		n.next = new Node();
 		n.next.data = x;
 		
-		//System.out.println("addLast prn = "+n.data);
 	}
 
 	public void insert(int x,int i) {
 		int  count = 0;
 		Node n = head;
+		//shift node to the most nearest node that wanted to insert
 		while(!(n.next == null) && count<i) {
 			n = n.next;
 			count++;
@@ -53,9 +53,16 @@ public class LinkedList {
 	public void removeAt(int i) {
 		int count = 0;
 		Node n = head;
-		while(!(n==null)) {
-			
+		//shift node to the most nearest node that wanted to remove
+		while(!(n==null) && count<i) {
+			n=n.next;
+			count++;
 		}
+		//cant remove that node if input i > node(that node must not null)
+		if(n.next==null) {
+			return;
+		}
+		n.next = n.next.next; 
 	}
 	
 	public void draw(Graphics g) {
