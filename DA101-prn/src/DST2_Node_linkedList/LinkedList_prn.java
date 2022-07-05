@@ -4,7 +4,7 @@ public class LinkedList_prn {
 
 	Node head;
 
-//	public LinkedList() {
+//	public LinkedList_prn() {
 //		head = new Node();
 //	
 //	}
@@ -20,6 +20,7 @@ public class LinkedList_prn {
 
 		// check if it's first node let it be head node
 		if (head == null) {
+			System.out.println("head null ");
 			head = node;
 		}
 		// if not first node ,

@@ -4,9 +4,9 @@ public class Test_play_withLinkedList {
 
 	public static void main(String[] args) {
 		
-		LinkedList l = new LinkedList();
+		LinkedList_prn l = new LinkedList_prn();
 		l.addFirst(44);
-		l.addLast(3);
+		//l.addLast(3);
 		l.addFirst(12);
 		
 		l.show();

@@ -10,6 +10,7 @@ public class LinkedList {
 
 	public LinkedList() {
 		head = new Node();
+		System.out.println("head start "+"prn = "+head.data);
 		// head.next = null by default
 	}
 
@@ -18,8 +19,9 @@ public class LinkedList {
 		n.data = x;
 
 		n.next = head.next;
-		head.next = n;
-
+		//head.next = n;
+		
+		System.out.println("addFirst prn = "+n.data);
 	}
 
 	public void addLast(int x) {
@@ -29,8 +31,33 @@ public class LinkedList {
 		}
 		n.next = new Node();
 		n.next.data = x;
+		
+		//System.out.println("addLast prn = "+n.data);
 	}
 
+	public void insert(int x,int i) {
+		int  count = 0;
+		Node n = head;
+		while(!(n.next == null) && count<i) {
+			n = n.next;
+			count++;
+		}
+		//test insert node
+		Node temp = n.next;
+		n.next = new Node();
+		n.next.data = x;
+		n.next.next = temp;
+		
+	}
+	
+	public void removeAt(int i) {
+		int count = 0;
+		Node n = head;
+		while(!(n==null)) {
+			
+		}
+	}
+	
 	public void draw(Graphics g) {
 		int i =0;
 		Node n = head;
