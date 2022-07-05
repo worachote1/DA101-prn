@@ -6,7 +6,7 @@ public class Test_play_withLinkedList {
 		
 		LinkedList l = new LinkedList();
 		l.addFirst(44);
-		l.addFirst(3);
+		l.addLast(3);
 		l.addFirst(12);
 		
 		l.show();
