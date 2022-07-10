@@ -47,5 +47,49 @@ public class DoublyLinkedList {
 		n.next.next = temp;
 		n.next.prev = n;
 		temp.prev = n.next ;
+		
+	}
+	
+	public void addFirst(int x) {
+		Node n = new Node();
+		n.data = x;
+		n.next = head.next;
+		n.next.prev = n;
+		n.prev = head;
+		head.next = n;
+		
+		size++;
+	}
+	
+	public void addLast(int x) {
+		Node n = new Node();
+		n.data = x;
+		
+		n.prev = tail.prev;
+		n.prev.next = n;
+		n.next = tail;
+		tail.prev = n;
+				
+		size++;
+	}
+	
+	public void removeAt(int i) {
+		
+		if(i < 0 || i>=size) {
+			System.out.println("Error prn");
+			return;
+		}
+		int count = 0;
+		Node n = head;
+		
+		while(n.next != tail && count<i) {
+			n = n.next;
+			count++;
+		}
+		
+		n.next = n.next.next; 
+		n.next.prev = n;
+		
+		
 	}
 }
