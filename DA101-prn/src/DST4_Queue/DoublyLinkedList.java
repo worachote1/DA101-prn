@@ -1,20 +1,22 @@
-package DST2_Node_linkedList;
+package DST4_Queue;
 
-public class DoublyLinkedList {
+import java.security.InvalidParameterException;
+
+public class DoublyLinkedList<T> {
 	public int size;
-	public Node head,tail;
+	public Node<T> head,tail;
 	
 	public DoublyLinkedList() {
-		head = new Node();
-		tail = new Node();
+		head = new Node<T>();
+		tail = new Node<T>();
 		head.next = tail;
 		tail.prev = head;
 		size = 0;
 	}
 	
-	public void insert(int x,int i) {
+	public void insert(T x,int i) {
 		int count = 0;
-		Node n;
+		Node<T> n;
 		
 		if(i>size) {
 			System.out.println("Error prn");
@@ -41,8 +43,8 @@ public class DoublyLinkedList {
 		}
 		
 		//After shift process
-		Node temp = n.next;
-		n.next = new Node();
+		Node<T> temp = n.next;
+		n.next = new Node<T>();
 		n.next.data = x;
 		n.next.next = temp;
 		n.next.prev = n;
@@ -50,8 +52,8 @@ public class DoublyLinkedList {
 		
 	}
 	
-	public void addFirst(int x) {
-		Node n = new Node();
+	public void addFirst(T x) {
+		Node<T> n = new Node<T>();
 		n.data = x;
 		n.next = head.next;
 		n.next.prev = n;
@@ -61,8 +63,8 @@ public class DoublyLinkedList {
 		size++;
 	}
 	
-	public void addLast(int x) {
-		Node n = new Node();
+	public void addLast(T x) {
+		Node<T> n = new Node<T>();
 		n.data = x;
 		
 		n.prev = tail.prev;
@@ -80,7 +82,7 @@ public class DoublyLinkedList {
 			return;
 		}
 		int count = 0;
-		Node n = head;
+		Node<T> n = head;
 		
 		while(n.next != tail && count<i) {
 			n = n.next;
@@ -92,4 +94,23 @@ public class DoublyLinkedList {
 	
 		size--;
 	}
+	
+	public T get(int index) {
+		if(index<0 || index>=size) {
+			throw new InvalidParameterException("prn index out of range : "+index);
+		}
+		int count = 0;
+		Node<T> p = head;
+		while(!(p.next == null) && count<=index) {
+			p = p.next;
+			count++;
+		}
+		
+		return (T)p.data;
+	}
+	
+	public int size() {
+		return size;
+	}
+	
 }

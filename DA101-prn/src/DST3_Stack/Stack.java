@@ -14,6 +14,7 @@ public class Stack {
 		ll.removeAt(0);
 		return x;
 	}
+	
 	public int top() {
 		return ll.getData(0);
 	}
