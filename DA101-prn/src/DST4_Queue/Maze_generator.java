@@ -18,6 +18,11 @@ public class Maze_generator {
 					else {
 						pw.print(" ");
 					}
+					
+					//so the start and end will not be a wall
+					if((i==0&&j==0) || (i==19&&j==19)) {
+						pw.print(" ");
+					}
 				}
 				pw.println();
 			}

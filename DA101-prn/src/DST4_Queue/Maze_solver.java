@@ -35,7 +35,7 @@ public class Maze_solver {
 		
 		q.enqueue(start);
 		start.isVisited = true;
-		
+		System.out.println("prn -> "+Pmaze[0][0].isVisited);
 		while(q.size()>0) {
 			System.out.print(q.size()+"\t");
 			PointInMaze now = q.dequeue();
@@ -111,7 +111,6 @@ public class Maze_solver {
 		//Track which way have you come
 		//Mark that way with number 999
 		//with the help of passing parameter by reference
-		
 		PointInMaze trackPrev = end;
 		while(trackPrev.prev != null && trackPrev != start) {
 			System.out.println(" tracking.... -> ["+trackPrev.y+"] ["+trackPrev.x+"]");
