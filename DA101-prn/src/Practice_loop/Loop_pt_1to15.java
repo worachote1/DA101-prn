@@ -315,7 +315,7 @@ public class Loop_pt_1to15 {
 		//pt_12();
 		//pt_13();
 		//pt14();
-		pt_15(15);
+		pt_15(5);
 	}
 
 }
