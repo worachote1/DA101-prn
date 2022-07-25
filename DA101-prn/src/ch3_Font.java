@@ -19,7 +19,7 @@ public class ch3_Font {
 				s1_NotDup += s1.charAt(i);
 			}
 		}
-		System.out.println();
+		
 		for (int i = 0; i < s2.length(); i++) {
 			if (Character.isWhitespace(s2.charAt(i))) {
 				continue;
@@ -36,7 +36,7 @@ public class ch3_Font {
 
 		// now check which char of 2 string is the same
 		int count = 0;
-		char temp_result[] = new char[44000];
+		char temp_result[] = new char[200];
 		int index_tempResult = 0;
 		for (int i = 0; i < s1_NotDup.length(); i++) {
 			for (int j = 0; j < s2_NotDup.length(); j++) {
@@ -90,12 +90,17 @@ public class ch3_Font {
 		
 		//After sort 
 		//display final result
+		String end = "";
 		for(int i=0;i<index_LowerCase;i++) {
-			System.out.print(temp_Lower_result[i]);
+			//System.out.print(temp_Lower_result[i]+" ");
+			end += temp_Lower_result[i]+" ";
 		}
 		for(int i=0;i<index_UpperCase;i++) {
-			System.out.print(temp_Upper_result[i]);
+			//System.out.print(temp_Upper_result[i]+" ");
+			end += temp_Upper_result[i]+" ";
 		}
+		
+		System.out.println(end);
 	}
 
 }
