@@ -5,13 +5,13 @@ public class EXAM_2_P4 {
 
 	public static void displayVolume(int volume[][]) {
 		// display input for water volume of each province
-		for (int i = 0; i < volume.length; i++) {
+		int i=0;
+		for (i = 0; i < volume.length; i++) {
 			for (int j = 0; j < volume[0].length; j++) {
 				System.out.print(volume[i][j] + " ");
 			}
 			System.out.println();
 		}
-		System.out.println("-");
 	}
 
 	public static void main(String[] args) {
@@ -28,7 +28,7 @@ public class EXAM_2_P4 {
 		bankok_posY = sc.nextInt();
 		bankok_posX -= 1; // to work in metric
 		bankok_posY -= 1;
-
+       
 		altitude = new int[row][col];
 		volume = new int[row][col];
 
@@ -45,20 +45,15 @@ public class EXAM_2_P4 {
 				volume[i][j] = sc.nextInt();
 			}
 		}
-
-		Boolean endFlood_check = false;
+		sc.close();
+		
 		int countRow_flood = 0;
 		int flood_bankokCount = 0;
-
-		Boolean flood_bottom[][] = new Boolean[row][col];
-		Boolean flood_left[][] = new Boolean[row][col];
-		Boolean flood_right[][] = new Boolean[row][col];
-		Boolean flood_top[][] = new Boolean[row][col];
 
 		// ArrayList to keep each flood result
 		ArrayList<int[][]> flood_result = new ArrayList<int[][]>();
 
-		while (!endFlood_check) {
+		while (true) {
 			countRow_flood = 0;
 			// clone to temp_volume
 			int temp_volume[][] = new int[row][col];
@@ -72,20 +67,19 @@ public class EXAM_2_P4 {
 				for (int j = 0; j < volume[0].length; j++) {
 					
 					int t = temp_volume[i][j];
-					
-					flood_bottom[i][j] = false;
-					flood_left[i][j] = false;
-					flood_right[i][j] = false;
-					flood_top[i][j] = false;
+					Boolean flood_bottom = false;
+					Boolean flood_left = false;
+					Boolean flood_right = false;
+					Boolean flood_top = false;
 					// check if flood bottom ?
 					if (i < volume.length - 1) {
 						int a = t + altitude[i][j];
 						int a_bottom = temp_volume[i + 1][j] + altitude[i + 1][j];
 						if (t>0 && a - a_bottom >= 2) {
-							flood_bottom[i][j] = true;
 							volume[i][j]--;
 							volume[i + 1][j]++;
 							t--;
+							flood_bottom = true;
 						}
 					}
 
@@ -94,10 +88,10 @@ public class EXAM_2_P4 {
 						int a = t + altitude[i][j];
 						int a_left = temp_volume[i][j-1] + altitude[i][j - 1];
 						if (t>0 && a - a_left >= 2) {
-							flood_left[i][j] = true;
 							volume[i][j]--;
 							volume[i][j - 1]++;
 							t--;
+							flood_left = true;
 						}
 					}
 					// check if flood right ?
@@ -105,10 +99,10 @@ public class EXAM_2_P4 {
 						int a = t + altitude[i][j];
 						int a_right = temp_volume[i][j+1] + altitude[i][j + 1];
 						if (t>0 && a - a_right >= 2) {
-							flood_right[i][j] = true;
 							volume[i][j]--;
 							volume[i][j + 1]++;
 							t--;
+							flood_right = true;
 						}
 					}
 					// check if flood top ?
@@ -116,40 +110,36 @@ public class EXAM_2_P4 {
 						int a = t + altitude[i][j];
 						int a_top = temp_volume[i - 1][j] + altitude[i - 1][j];
 						if (t>0 && a - a_top >= 2) {
-							flood_top[i][j] = true;
 							volume[i][j]--;
 							volume[i - 1][j]++;
 							t--;
+							flood_top = true;
 						}
 					}
-
-				}
-
-			}
-
-			// check flood to decide whether end loop or not ?
-			for (int i = 0; i < volume.length; i++) {
-				for (int j = 0; j < volume[0].length; j++) {
-					if ((!flood_bottom[i][j]) && (!flood_left[i][j]) 
-							&& (!flood_right[i][j]) && (!flood_top[i][j])) {
+					
+					if((!flood_bottom) && (!flood_left) 
+							&& (!flood_right) && (!flood_top)) {
 						countRow_flood++;
 					}
 				}
 			}
+			
+			if (countRow_flood == row * col) {// row * col
+				flood_bankokCount = volume[bankok_posX][bankok_posY];
+				break;
+			}
+			
 			// add each flood to arrayList
+			
 			int VolumeClone[][] = new int[row][col];
 			for (int i = 0; i < row; i++) {
 				for (int j = 0; j < col; j++) {
 					VolumeClone[i][j] = volume[i][j];
-				}
+				} 
 			}
 			flood_result.add(VolumeClone);
-			System.out.println("countRow = "+countRow_flood);
-			if (countRow_flood == row * col) {// row * col
-				flood_bankokCount = volume[bankok_posX][bankok_posY];
-				endFlood_check = true;
-				System.out.println("End countRow = "+countRow_flood);
-			}
+			
+			//System.out.println("prn hi countRow_flood = "+countRow_flood);
 		}
 
 		// display result as grader want
@@ -158,8 +148,10 @@ public class EXAM_2_P4 {
 		for (int i = 0; i < flood_result.size(); i++) {
 			//
 			displayVolume(flood_result.get(i));
+			//if(i!= flood_result.size()-1) {
+				System.out.print("-");
+				System.out.println();
+			//}
 		}
-
-		sc.close();
 	}
 }
