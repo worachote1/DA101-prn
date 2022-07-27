@@ -92,12 +92,23 @@ public class ch3_Font {
 		//display final result
 		String end = "";
 		for(int i=0;i<index_LowerCase;i++) {
-			//System.out.print(temp_Lower_result[i]+" ");
-			end += temp_Lower_result[i]+" ";
+			System.out.print(temp_Lower_result[i]);
+			if(index_UpperCase==0) {
+				if(i!=index_LowerCase-1) 
+					System.out.print(" ");
+			}
+			else {
+				System.out.print(" ");
+			}
+			//end += temp_Lower_result[i]+" ";
 		}
 		for(int i=0;i<index_UpperCase;i++) {
-			//System.out.print(temp_Upper_result[i]+" ");
-			end += temp_Upper_result[i]+" ";
+			System.out.print(temp_Upper_result[i]);
+			if(i!=index_UpperCase-1) {
+				System.out.print(" ");
+			}
+			//end += temp_Upper_result[i];
+			
 		}
 		
 		System.out.println(end);
