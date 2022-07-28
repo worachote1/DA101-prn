@@ -15,7 +15,9 @@ public class ch4_triangle {
 						System.out.println("c = "+c+" b = "+b+" a = "+a);
 						//System.out.println(c);
 					}
+					
 				}
+				
 			}
 		}
 		//System.out.println("count prn = "+count);

@@ -1,29 +1,26 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class test {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int a[] = { 6, 4, 5, 69, 12, 2, 11, 9 };
-		for(int i=0;i<a.length;i++)
-		{
-			int min_index = i;
-			for(int j=i+1;j<a.length;j++)
-			{
-				if(a[j]<a[min_index])
-				{
-					min_index = j;
-				}
-			}
-			int t = a[i];
-			a[i] = a[min_index];
-			a[min_index]=t;
-		}
-
-		//display
-		for(int i=0;i<a.length;i++) {
-			System.out.print(a[i]+" ");
-		}
+		ArrayList<int[]> prn = new ArrayList<int[]>();
+		int e1[] = {1,2,44};
+		int e2[] = {56,77,24};
+		int e3[] = {156,887,324};
+		prn.add(e1);
+		prn.add(e2);
+		prn.add(e3);
+		
+		System.out.println(prn.get(1)[2]); //24
+		
+		ArrayList<String[]> s = new ArrayList<String[]>();
+		String s1[] = {"1","2","44"};
+		String s2[] = {"1","2","44"};
+		String s3[] = {"1","2","44"};
+		s.add(s1);
+		
 	}
 
 }
