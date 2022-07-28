@@ -30,31 +30,21 @@ public class ch4_BubbleSort {
 				}
 				//same length
 				else if(ss[j].length() == ss[j + 1].length()) {
-					int k=0;
-					while(true) {
-						if((ss[j].charAt(k) < ss[j + 1].charAt(k))) {
+					//int k=0;
+					for(int k=0;k<ss[j].length();k++) {
+						if(ss[j].charAt(k) < ss[j + 1].charAt(k)) {
 							break;
 						}
-						if(k!=0) {
-							if(ss[j].charAt(k) > ss[j + 1].charAt(k)
-									&& !(ss[j].charAt(k - 1) <= ss[j + 1].charAt(k - 1))) {
-								String temp = ss[j];
-								ss[j] = ss[j + 1];
-								ss[j + 1] = temp;
-								count++;
-								break;
-							}
+						if(ss[j].charAt(k) == ss[j + 1].charAt(k)) {
+							continue;
 						}
-						else if(k==0) {
-							if(ss[j].charAt(k) > ss[j + 1].charAt(k)) {
-								String temp = ss[j];
-								ss[j] = ss[j + 1];
-								ss[j + 1] = temp;
-								count++;
-								break;
-							}
+						if(ss[j].charAt(k) > ss[j + 1].charAt(k)) {
+							String temp = ss[j];
+							ss[j] = ss[j + 1];
+							ss[j + 1] = temp;
+							count++;
+							break;
 						}
-						k++;
 					}
 				}
 				
