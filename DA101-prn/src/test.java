@@ -45,6 +45,9 @@ public class test {
 		
 		System.out.println(t.pow(2).mod(M)); 
 		
+		double v = 5.4241;
+		//System.out.println(Math.ceil(v));
+		System.out.format("%.2f",v);
 	}
 
 }
