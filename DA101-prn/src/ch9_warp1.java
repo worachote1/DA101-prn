@@ -3,9 +3,9 @@ import java.util.Scanner;
 
 public class ch9_warp1 {
 
-	public static String isWarp() {
-		
-	}
+//	public static String isWarp() {
+//		
+//	}
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int n,a,b;
@@ -41,14 +41,18 @@ public class ch9_warp1 {
 		//use save_rowStart to check
 		
 		for(int i=0;i<save_rowStart.size();i++) {
-			int colSave = warpSpot[i][1];
+			int colSave = warpSpot[save_rowStart.get(i)][1];
+			if(colSave==b)
+				return;
 			for(int j=0;j<warpSpot.length;j++) {
-				if(warpSpot[j][0] < a || warpSpot[j][0]==save_rowStart.get(i))
+				
+				if(warpSpot[j][0] < a || warpSpot[j][0]==warpSpot[save_rowStart.get(i)][0])
 					continue;
 				
-				if(colSave==warpSpot[j][0])
+				if(colSave==warpSpot[j][0]) {
 					colSave =  warpSpot[j][1];
-				
+				}
+							
 				if(colSave==b) {
 					System.out.println("yes");
 					return;
