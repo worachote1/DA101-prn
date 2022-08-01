@@ -16,38 +16,35 @@ public class test {
 		
 		System.out.println(prn.get(1)[2]); //24
 		
-		ArrayList<String[]> s = new ArrayList<String[]>();
-		String s1[] = {"1","2","44"};
-		String s2[] = {"1","2","44"};
-		String s3[] = {"a", "b", "c", "d"};//{"-2","1","5","6"};
-		s.add(s1);
+		int M[][] = {	{1,1},
+						{1,0}
+			}; 
 		
-		System.out.println("'sd\\ds");
-		System.out.println("BigInt");
-		System.out.println(Math.pow(55, 64/2));
-		BigInteger bigInteger = new BigInteger("10000000000000000000000000000000");
-		BigInteger p = new BigInteger("44");
-		System.out.println(bigInteger);
-		System.out.println(bigInteger.mod(p));
+		int K[][] = {	{1,1,4},
+				{1,0,2}
+	}; 
+		// R = M X K
+		int R[][] = new int[M.length][K[0].length];
+	
+		for(int i=0;i<R.length;i++) {
+			
+			for(int j=0;j<R[0].length;j++) {
+				int sum = 0;
+				for(int k=0;k<K.length;k++) {
+					sum += M[i][k] * K[k][j];
+				}
+				R[i][j]=sum;
+			}
+		};
 		
-//		String sr = String.valueOf((BigInteger)Math.pow(55, 64/2));
-//		System.out.println(sr+44);
-		//55 64 33
-		int a = 55;
-		int k = 64;
-		int m = 33;
-		//k /= 2;
-		BigInteger A = BigInteger.valueOf(a);
-		BigInteger K = BigInteger.valueOf(k);
-		BigInteger M = BigInteger.valueOf(m);
+		System.out.println("display metric");
+		for(int i=0;i<M.length;i++) {
+			for(int j=0;j<M[0].length;j++) {
+				System.out.print(R[i][j]+" ");
+			}
+			System.out.println();
+		}
 		
-		BigInteger t = (A.pow(k/2)).mod(M);
-		
-		System.out.println(t.pow(2).mod(M)); 
-		
-		double v = 5.4241;
-		//System.out.println(Math.ceil(v));
-		System.out.format("%.2f",v);
+		System.out.println(10*Math.pow(3, 2));
 	}
-
 }
