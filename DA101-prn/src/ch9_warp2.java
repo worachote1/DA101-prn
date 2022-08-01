@@ -50,7 +50,7 @@ public class ch9_warp2 {
 			if (colSave == b) {
 				//System.out.println("prn warpSpot[i]->"+Arrays.toString(warpSpot[save_rowStart.get(i)]) );
 				result.add(warpSpot[save_rowStart.get(i)]);
-				System.out.println("ss");
+			
 				continue;
 			}
 			int save_result[] = new int[444];
@@ -96,8 +96,8 @@ public class ch9_warp2 {
 					for(int k=0;k<temp.length;k++) {
 						temp[k]=result.get(j)[k];
 					}
-					result.set(i, result.get(j+1));
-					result.set(i+1, temp);
+					result.set(j, result.get(j+1));
+					result.set(j+1, temp);
 				}
 			}
 		}
