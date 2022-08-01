@@ -42,8 +42,11 @@ public class ch9_warp1 {
 		
 		for(int i=0;i<save_rowStart.size();i++) {
 			int colSave = warpSpot[save_rowStart.get(i)][1];
-			if(colSave==b)
+			if(colSave==b) {
+				System.out.println("yes");
 				return;
+			}
+				
 			for(int j=0;j<warpSpot.length;j++) {
 				
 				if(warpSpot[j][0] < a || warpSpot[j][0]==warpSpot[save_rowStart.get(i)][0])

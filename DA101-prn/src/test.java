@@ -37,14 +37,25 @@ public class test {
 			}
 		};
 		
-		System.out.println("display metric");
-		for(int i=0;i<M.length;i++) {
-			for(int j=0;j<M[0].length;j++) {
-				System.out.print(R[i][j]+" ");
+	
+		ArrayList<ArrayList<Integer>> testA = new ArrayList<ArrayList<Integer>>();
+		ArrayList<Integer> a = new ArrayList<Integer>();
+		ArrayList<Integer> b = new ArrayList<Integer>();
+		ArrayList<Integer> c = new ArrayList<Integer>();
+
+		a.add(1); a.add(12); a.add(23);
+		b.add(44); b.add(57);
+		c.add(33); c.add(87);
+		
+		testA.add(a);
+		testA.add(b);
+		testA.add(c);
+		
+		for(int i=0;i<testA.size();i++) {
+			for(int j=0;j<testA.get(i).size();j++) {
+				System.out.print(testA.get(i).get(j)+" ");
 			}
 			System.out.println();
 		}
-		
-		System.out.println(10*Math.pow(3, 2));
 	}
 }
