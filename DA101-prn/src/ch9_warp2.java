@@ -53,34 +53,60 @@ public class ch9_warp2 {
 			
 				continue;
 			}
+			
 			int save_result[] = new int[444];
 			save_result[0]=a;
 			int rs = 1;
-			for (int j = 0; j < warpSpot.length; j++) {
+			Boolean end = false;
+			while(!end) {
+				//Boolean notFound = true;
+				int countF = 0;
+				for (int j = 0; j < warpSpot.length; j++) {
 
-				if (warpSpot[j][0] < a || warpSpot[j][0] == warpSpot[save_rowStart.get(i)][0])
-					continue;
+//					if (warpSpot[j][0] < a || warpSpot[j][0] == warpSpot[save_rowStart.get(i)][0])
+//						continue;
 
-				if (colSave == warpSpot[j][0]) {
-					save_result[rs++]=colSave;
-					colSave = warpSpot[j][1];
-				}
-
-				if (colSave == b) {
-					//System.out.println("yes");
-					save_result[rs++]=colSave;
-					int temp_result[] = new int[rs];
-					for(int k=0;k<temp_result.length;k++) {
-						temp_result[k]=save_result[k];
+					if (colSave == warpSpot[j][0]) {
+						save_result[rs++]=colSave;
+						colSave = warpSpot[j][1];
+						//notFound = false;
+						break;
 					}
-					result.add(temp_result);
-					//System.out.println("prn == b which temp = "+Arrays.toString(temp_result));
-					break;
-					//return;
+
+					if (colSave == b) {
+						//System.out.println("yes");
+						save_result[rs++]=colSave;
+						int temp_result[] = new int[rs];
+						for(int k=0;k<temp_result.length;k++) {
+							temp_result[k]=save_result[k];
+						}
+						result.add(temp_result);
+						//System.out.println("prn == b which temp = "+Arrays.toString(temp_result));
+						end = true;
+						break;
+						//return;
+					}
+					
+					countF++;
+					if(countF==warpSpot.length) {
+						end = true;
+						break;
+					}
+					
 				}
 			}
+			System.out.println("dvb");
+			
 		}
 
+		//if these way no to b (last column != b) , delete from result
+//		for(int i=0;i<result.size();i++) {
+//			int lastCol = result.get(i).length-1;
+//			if(result.get(i)[lastCol]!=b) {
+//				result.remove(i);
+//				i--;
+//			}
+//		}
 		if(result.size()==0) {
 			System.out.println("no");
 			return;
