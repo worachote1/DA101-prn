@@ -21,7 +21,7 @@ public class ch9_warp2 {
 		// check warp
 		if (warpSpot.length == 1) {
 			if (warpSpot[0][1] == b && warpSpot[0][0]==a) {
-				System.out.println(warpSpot[0][0]+"->"+warpSpot[0][1]);
+				//System.out.println(warpSpot[0][0]+"->"+warpSpot[0][1]);
 				return;
 			}
 			System.out.println("no");
@@ -37,11 +37,11 @@ public class ch9_warp2 {
 		}
 		
 		//test display save_rowStart
-		System.out.println("display save_rowStart which size = "+save_rowStart.size());
-		for(int i=0;i<save_rowStart.size();i++) {
-			System.out.println(save_rowStart.get(i)+" : "+warpSpot[save_rowStart.get(i)][0]+" "+warpSpot[save_rowStart.get(i)][1]);
-		}
-		System.out.println();
+//		System.out.println("display save_rowStart which size = "+save_rowStart.size());
+//		for(int i=0;i<save_rowStart.size();i++) {
+//			System.out.println(save_rowStart.get(i)+" : "+warpSpot[save_rowStart.get(i)][0]+" "+warpSpot[save_rowStart.get(i)][1]);
+//		}
+		//System.out.println();
 		// use save_rowStart to check
 		ArrayList<int[]> result = new ArrayList<int[]>();
 		
@@ -62,9 +62,6 @@ public class ch9_warp2 {
 				//Boolean notFound = true;
 				int countF = 0;
 				for (int j = 0; j < warpSpot.length; j++) {
-
-//					if (warpSpot[j][0] < a || warpSpot[j][0] == warpSpot[save_rowStart.get(i)][0])
-//						continue;
 
 					if (colSave == warpSpot[j][0]) {
 						save_result[rs++]=colSave;
@@ -94,9 +91,7 @@ public class ch9_warp2 {
 					}
 					
 				}
-			}
-			System.out.println("dvb");
-			
+			}		
 		}
 
 		//if these way no to b (last column != b) , delete from result
@@ -112,7 +107,7 @@ public class ch9_warp2 {
 			return;
 		}
 		
-		System.out.println("res size = "+result.size());
+		//System.out.println("res size = "+result.size());
 		//System.out.println("display output");
 		//sort which warp to be printed first
 		for(int i=0;i<result.size()-1;i++) {
